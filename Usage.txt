@@ -1,0 +1,50 @@
+Como ejemplo, para todos los casos se usará el proyecto PartitionProblemTabulation, cuyos paquetes son partitionproblemtabulation y org.apache.commons.cli.
+Su Main a ejecutar es PartitionProblemTabulation. 
+Para probar cualquier otro proyecto, simplemente cambiar los nombres por sus respectivos equivalentes.
+
+----------------------------------JAVA-----------------------------------
+Siempre situado en el directorio src, tanto para Windows como para Linux, y habiendo ejecutado FileGenerator(Vector):
+	Compilar:
+	
+		javac org/apache/commons/cli/*.java partitionproblemtabulation/*.java
+
+	Correr(partitionproblemtabulation/PartitionProblemTabulation o partitionproblemtabulation.ProblemTabulation):
+	
+		java partitionproblemtabulation/ProblemTabulation -f ../../../FileVect [args]
+
+	Empaquetar JAR (habiendo compilado previamente):
+		
+		jar -cfe output.jar partitionproblemtabulation.ProblemTabulation partitionproblemtabulation/*.class org/apache/commons/cli/*.class
+
+	Ejcutar JAR:
+
+		java -jar output.jar -f ../../../FileVect [args]
+
+
+--------------------------------------------C++--------------------------------------------
+Siempre situado en el directorio principal del proyecto, tanto para Windows como para Linux:
+Según si estamos en Windows o Linux, se crea un ejecutable característico. Habiendo ejecutado FileGenerator(Vector):
+	Compilar(Donde el primer argumento es el main, output es el ejecutable salida. En iteradores existe una clasee adicional que debe ser incluida):
+		
+		g++ -o output PartitionProblemTabulation.cpp Tabulation.cpp ParserArgs.cpp ReadFile.cpp 
+
+	Correr:
+
+		Windows->output.exe -f ../FileVect [args]
+		Linux->./output.out -f ../FileVect [args]
+
+
+---------------------------------------PYTHON----------------------------------------------
+Siempre situado en el directorio donde está el ejecutable *.py. Habiendo ejecutado FileGenerator(Vectores):
+	Correr:
+		
+		python PartitionProblemTabulation.py -f ../../FileVect [args]
+
+------------------------------------BATCH---------------------------------------------------
+Se incluyen dos ejecutables .bat para automatizar este cálculo. Un script se encarga de reunir los ejecutables de JAVA y C++, 
+debidamente compilados y empaqeutados, en una misma carpeta. El otro script depende del primero, ya que obtiene los timepos de 
+ejecució de todos los proyectos compilados y empaquetados anteriormente, incluído PYTHON. La salida de tiempos será guardado en
+seis ficheros distintos, según qué algoritmo se use. 
+La carpeta que el primer .bat crea, en la raíz, es llamada "Executables" donde se almacenará, además de los ejecutables de
+C++ y JAVA, los seis ficheros salida con los tiempos de cada algoritmo de los tres lenguajes de programación escogidos.
+Si se desea cambiar el número de elementos creados en cada iteración del .bat, editarlo y cambiar los valores del bucle "for".
